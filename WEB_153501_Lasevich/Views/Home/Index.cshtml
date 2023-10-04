@@ -1,64 +1,44 @@
-﻿@{
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using WEB_153501_Lasevich.util
+@{
     ViewBag.Title = "Index";
+    @model List<ListDemo>
+
 }
-<main class="container">
-    <h1>Лабораторная работа 1</h1>
-    <h2>Список</h2>
-    <ol type="A">
-        <li>Элемент 1 списка</li>
-        <li>Элемент 2 списка</li>
-    </ol>
-    <hr>
-    <h2>Форма</h2>
-    <form class="row-g3" method="get">
-        <div class="col-12">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck" name="RememberOption">
-                <label class="form-check-label" for="gridCheck">
-                    Remember me
-                </label>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck" name="TermsOfServiceAgreement" required>
-                <label class="form-check-label" for="gridCheck">
-                    I agree with Terms of Service
-                </label>
-            </div>
-        </div>
-
-        <div>
-            <h3>Choose your role</h3>
-            <input type="radio" name="role" value="Client" />
-            <label for="Client">Client</label>
-            <input type="radio" name="role" value="Business" />
-            <label for="Business">Business</label>
-            <input type="radio" name="role" value="Admin" />
-            <label for="Admin">Admin</label>
-        </div>
-
-        <div class="row mb-3">
-            <h3>Log In</h3>
-            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail" name="emailInput">
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-            <div class="col-sm-10">
-                <input type="password" class="form-control" id="inputPassword" name="passwordInput">
-            </div>
-        </div>
 
 
-
-        <div class="form-example">
-            <input type="submit" value="Log In" />
-        </div>
-
-        <br />
-
-    </form>
-</main>
+<h1>@ViewData["labVersionMessage"]</h1>
+<h2>Список</h2>
+<ol type="A">
+    @for (int i = 0; i < 5; i++)
+    {
+        <li>Элемент @i списка</li>
+    }
+</ol>
+<hr />
+<br />
+<h2>Форма</h2>
+<form method="post">
+    <div>
+        <input type="checkbox" name="checkbox1" value="isChecked"> Чек-бокс 1
+    </div>
+    <div>
+        <input type="checkbox" name="checkbox2" value="isChecked"> Чек-бокс 2
+    </div>
+    <label>
+        <input type="radio" name="group" value="value1"> Радио-1
+        <input type="radio" name="group" value="value2"> Радио-2
+        <input type="radio" name="group" value="value3"> Радио-3
+    </label>
+    <select class="form-select" name="selDemo" asp-items="@(new SelectList(ViewData["ItemsDemoList"] as List<ListDemo>, "Id", "Name"))"></select>
+    <br>
+    <label for="login" class="form-label">Логин:</label>
+    <input type="text" class="form-control" id="login" name="login" required>
+    <br>
+    <label for="password" class="form-label">Пароль:</label>
+    <input type="password" class="form-control" id="password" name="password" required>
+    <br>
+    <button class="btn-primary">Отправить</button>
+</form>
