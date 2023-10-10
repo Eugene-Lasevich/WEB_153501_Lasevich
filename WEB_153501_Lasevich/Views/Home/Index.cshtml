@@ -1,24 +1,16 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@using WEB_153501_Lasevich.util
-@{
+﻿@{
     ViewBag.Title = "Index";
-    @model List<ListDemo>
-
 }
 
-
-<h1>@ViewData["labVersionMessage"]</h1>
+<h1>@ViewData["MainHeaderMessage"]</h1>
 <h2>Список</h2>
 <ol type="A">
-    @for (int i = 0; i < 5; i++)
-    {
-        <li>Элемент @i списка</li>
-    }
+    @for (int i = 0; i < 10; i++)
+	{
+		<li>Элемент списка @i</li>
+	}
 </ol>
-<hr />
-<br />
+<hr/>
 <h2>Форма</h2>
 <form method="post">
     <div>
@@ -34,11 +26,11 @@
     </label>
     <select class="form-select" name="selDemo" asp-items="@(new SelectList(ViewData["ItemsDemoList"] as List<ListDemo>, "Id", "Name"))"></select>
     <br>
-    <label for="login" class="form-label">Логин:</label>
-    <input type="text" class="form-control" id="login" name="login" required>
-    <br>
-    <label for="password" class="form-label">Пароль:</label>
-    <input type="password" class="form-control" id="password" name="password" required>
+        <label for="login" class="form-label">Логин:</label>
+        <input type="text" class="form-control" id="login" name="login" required>
+        <br>
+        <label for="password" class="form-label">Пароль:</label>
+        <input type="password" class="form-control" id="password" name="password" required>
     <br>
     <button class="btn-primary">Отправить</button>
 </form>

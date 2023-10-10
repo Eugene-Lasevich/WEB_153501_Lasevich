@@ -1,4 +1,4 @@
-namespace WEB_153501_Lasevich.Models
+namespace Web_153501_Lasevich.Models
 {
     public class ErrorViewModel
     {
